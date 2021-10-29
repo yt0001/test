@@ -4,7 +4,6 @@
 #include<pthread.h>
 
 
-int thread_running = 0;
 
 void* ctrip_thread_info::thread_func(void* param){
     ctrip_thread_info* obj = static_cast<ctrip_thread_info*> (param);
@@ -25,7 +24,6 @@ void ctrip_thread_info::ctrip_init_thread_pool(int thread_num){
     _thread_running = 1;
     _tasknum = 0;
     _tasks = NULL;
-    thread_running = 1;
     _threadid = (pthread_t*)malloc(sizeof(pthread_t) * thread_num);
 
     for (int i = 0;i < thread_num; ++i) {
