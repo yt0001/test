@@ -15,6 +15,7 @@ PUBLIC struct ctrip_task {
 class ctrip_thread_info{
 public:
     static void* thread_func(void*);
+
     void ctrip_init_thread_pool(int thread_num);
 
     void ctrip_destory_thread_pool();

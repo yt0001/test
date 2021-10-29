@@ -1,7 +1,3 @@
-// ctrip_thread_pool.cpp : Defines the entry point for the console application.
-//
-
-//#include "stdafx.h"
 #include "ctrip_thread_pool.h"
 #include <stdio.h>
 #include <stdlib.h>
