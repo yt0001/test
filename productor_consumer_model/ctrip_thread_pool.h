@@ -1,6 +1,9 @@
 #pragma once
 #include<pthread.h>
 #include<thread>
+#include<mutex>
+#include<condition_variable>
+
 #ifndef NULL
 #define NULL 0
 #endif
