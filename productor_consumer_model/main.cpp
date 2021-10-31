@@ -19,7 +19,6 @@ int main(int argc, char* argv[])
     }
 
     sleep(10);
-
     cti.ctrip_destory_thread_pool();
     
     return 0;

@@ -1,6 +1,6 @@
 #pragma once
 #include<pthread.h>
-
+#include<thread>
 #ifndef NULL
 #define NULL 0
 #endif
@@ -14,8 +14,6 @@ PUBLIC struct ctrip_task {
 
 class ctrip_thread_info{
 public:
-    static void* thread_func(void*);
-
     void ctrip_init_thread_pool(int thread_num);
 
     void ctrip_destory_thread_pool();
@@ -32,9 +30,9 @@ private:
     int _thread_num;
     int _tasknum;
     struct ctrip_task* _tasks;
-    pthread_t* _threadid;
-    pthread_mutex_t _mutex;
-    pthread_cond_t _cond;
+    std::thread* _threads;
+    std::mutex _mutex;
+    std::condition_variable _cond;
 };
 
 
