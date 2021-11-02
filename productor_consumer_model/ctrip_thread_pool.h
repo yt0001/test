@@ -32,7 +32,6 @@ private:
     int _thread_num;
     int _tasknum;
     std::queue<ctrip_task> _tasks;
-    //struct ctrip_task* _tasks;
     std::thread* _threads;
     std::mutex _mutex;
     std::condition_variable _cond;

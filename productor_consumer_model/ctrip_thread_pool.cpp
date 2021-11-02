@@ -12,7 +12,6 @@ void ctrip_thread_info::ctrip_init_thread_pool(int thread_num){
     _thread_num = thread_num;
     _thread_running = 1;
     _tasknum = 0;
-    //_tasks = NULL;
     _threads = new std::thread[_thread_num];
     for (int i = 0;i < _thread_num; ++i) {
         _threads[i] = std::move(std::thread(&ctrip_thread_info::ctrip_thread_routine, this));
@@ -29,15 +28,6 @@ void ctrip_thread_info::ctrip_destory_thread_pool(){
 void ctrip_thread_info::ctrip_thread_pool_add_task(struct ctrip_task t){
     
     std::unique_lock<std::mutex> locker(_mutex);
-    /*struct ctrip_task* head = _tasks;
-    if(head == NULL) {
-        _tasks = t;
-    } else {
-        while (head->pNext != NULL) {
-            head = head->pNext;
-        }
-        head->pNext = t;
-    }*/
     _tasks.push(t);
     ++_tasknum;
     _cond.notify_one();
@@ -45,14 +35,6 @@ void ctrip_thread_info::ctrip_thread_pool_add_task(struct ctrip_task t){
 }
 
 struct ctrip_task ctrip_thread_info::ctrip_thread_pool_retrieve_task(){
-    /*struct ctrip_task* head = _tasks;
-
-    if(head != NULL) {
-        _tasks=head->pNext;
-        --_tasknum;
-        printf("retrieve a task, task value is [%d]\n", head->value);
-        return head;
-    }*/
     if(!_tasks.empty()){
         struct ctrip_task t = _tasks.front();
          --_tasknum;
