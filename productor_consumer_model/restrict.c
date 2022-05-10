@@ -1,4 +1,4 @@
-
+//restrict.c
 #include <stdio.h>
  
 int foo(int *a, int *b)
