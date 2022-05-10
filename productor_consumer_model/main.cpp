@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
         cti.ctrip_thread_pool_add_task(task);
     }
 
-    sleep(10);
+    sleep(5);
 
     cti.ctrip_destory_thread_pool();
     
